@@ -22,7 +22,6 @@ lint:
 build:
   stage: release
   script:
-  - helm init --client-only
   - helm package ./nagios
   artifacts:
     paths:
