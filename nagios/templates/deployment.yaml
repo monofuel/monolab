@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nagios.fullname" . }}
+  labels:
+    {{- include "nagios.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "nagios.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "nagios.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "nagios.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+          - name: nagios-etc-storage
+            mountPath: /opt/nagios/etc/
+          # - name: nagios-var-storage
+          #   mountPath: /opt/nagios/var/
+          - name: nagios-plugin-storage
+            mountPath: /opt/Custom-Nagios-Plugins
+          - name: nagiosgraph-etc-storage
+            mountPath: /opt/nagiosgraph/etc/
+          # - name: nagiosgraph-var-storage
+          #   mountPath: /opt/nagiosgraph/var/
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: nagios-etc-storage
+        persistentVolumeClaim:
+          claimName: nagios-etc-claim
+      # - name: nagios-var-storage
+      #   persistentVolumeClaim:
+      #     claimName: nagios-var-claim
+      - name: nagios-plugin-storage
+        persistentVolumeClaim:
+          claimName: nagios-plugin-claim
+      # - name: nagiosgraph-var-storage
+      #   persistentVolumeClaim:
+      #     claimName: nagiosgraph-var-claim
+      - name: nagiosgraph-etc-storage
+        persistentVolumeClaim:
+          claimName: nagiosgraph-etc-claim
