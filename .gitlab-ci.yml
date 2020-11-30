@@ -1,0 +1,22 @@
+default:
+  image: registry.gitlab.com/gitlab-org/gitlab-build-images:gitlab-charts-build-base
+
+
+stages:
+- test
+- build
+
+lint:
+  stage: test
+  script:
+  - helm lint ./nagios
+
+build:
+  stage: release
+  script:
+  - helm init --client-only
+  - helm package ./nagios
+  artifacts:
+    paths:
+    - mgmt*.tgz
+    expire_in: 7d
