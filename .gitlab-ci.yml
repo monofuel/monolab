@@ -17,12 +17,12 @@ stages:
 lint:
   stage: test
   script:
-  - helm lint ./nagios
+  - helm lint ./mgmt
 
 build:
   stage: release
   script:
-  - helm package ./nagios
+  - helm package ./mgmt
   artifacts:
     paths:
     - mgmt*.tgz

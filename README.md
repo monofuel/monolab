@@ -24,7 +24,6 @@ apply.ps1 to apply helm charts
 
 # TODO
 
-- should rename ./nagios/ ./mgmt/
 - https://docs.gitlab.com/runner/install/kubernetes.html
 
 - https://helm.sh/docs/intro/using_helm/
