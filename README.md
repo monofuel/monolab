@@ -1,6 +1,11 @@
 
 k8s homelab learning
 
+build.ps1 to build & push custom images (not used currently)
+apply.ps1 to apply helm charts
+
+
+
 # Notes
 
 - start `minikube start --driver=hyperv`
@@ -21,15 +26,8 @@ k8s homelab learning
 
 - https://helm.sh/docs/intro/using_helm/
 
-check out `minikube addons list`
+- check out `minikube addons list`
 
-
-```
-docker run --name nagios4  \
-  -v /path-to-nagios/etc/:/opt/nagios/etc/ \
-  -v /path-to-nagios/var:/opt/nagios/var/ \
-  -v /path-to-custom-plugins:/opt/Custom-Nagios-Plugins \
-  -v /path-to-nagiosgraph-var:/opt/nagiosgraph/var \
-  -v /path-to-nagiosgraph-etc:/opt/nagiosgraph/etc \
-  -p 0.0.0.0:8080:80 jasonrivers/nagios:latest
-  ```
+- persist nagios /var mounts?
+- nagios liveness/readiness probes?
+    - expects authorization by default
