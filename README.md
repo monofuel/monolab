@@ -24,6 +24,23 @@ apply.ps1 to apply helm charts
 
 # TODO
 
+- mgmt containers
+    - organizr
+    - influxdb
+    - grafana
+    - chronograf
+    - home-assistant
+- figure out how nfs mounts work
+    - media containers
+        - plex
+        - sabnzbd
+        - sonarr
+        - radarr
+- openvpn servers
+- k8s openVPN clients
+- setup k8s in VMs on home servers
+
+
 - https://docs.gitlab.com/runner/install/kubernetes.html
 
 - https://helm.sh/docs/intro/using_helm/

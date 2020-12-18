@@ -40,14 +40,14 @@ spec:
           volumeMounts:
           - name: nagios-etc-storage
             mountPath: /opt/nagios/etc/
-          # - name: nagios-var-storage
-          #   mountPath: /opt/nagios/var/
+          - name: nagios-var-storage
+            mountPath: /opt/nagios/var/
           - name: nagios-plugin-storage
             mountPath: /opt/Custom-Nagios-Plugins
           - name: nagiosgraph-etc-storage
             mountPath: /opt/nagiosgraph/etc/
-          # - name: nagiosgraph-var-storage
-          #   mountPath: /opt/nagiosgraph/var/
+          - name: nagiosgraph-var-storage
+            mountPath: /opt/nagiosgraph/var/
           # livenessProbe:
           #   httpGet:
           #     path: /
@@ -74,15 +74,15 @@ spec:
       - name: nagios-etc-storage
         persistentVolumeClaim:
           claimName: nagios-etc-claim
-      # - name: nagios-var-storage
-      #   persistentVolumeClaim:
-      #     claimName: nagios-var-claim
+      - name: nagios-var-storage
+        persistentVolumeClaim:
+          claimName: nagios-var-claim
       - name: nagios-plugin-storage
         persistentVolumeClaim:
           claimName: nagios-plugin-claim
-      # - name: nagiosgraph-var-storage
-      #   persistentVolumeClaim:
-      #     claimName: nagiosgraph-var-claim
+      - name: nagiosgraph-var-storage
+        persistentVolumeClaim:
+          claimName: nagiosgraph-var-claim
       - name: nagiosgraph-etc-storage
         persistentVolumeClaim:
           claimName: nagiosgraph-etc-claim

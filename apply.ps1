@@ -2,4 +2,5 @@
 # helm install mgmt ./nagios
 # minikube mount ./data:/host
 helm upgrade -i mgmt ./mgmt
-minikube service --url mgmt-nagios
+helm upgrade -i dev ./dev
+minikube service --url dev

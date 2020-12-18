@@ -1,6 +1,6 @@
-$minikubeIP=$(minikube ip)
+$minikubeIP = $(minikube ip)
 
 echo "minikube IP " $minikubeIP
 
-docker build -t test-image:latest test-image
-minikube cache add test-image:latest
+docker build -t dev-image:latest dev-image
+minikube cache add dev-image:latest
