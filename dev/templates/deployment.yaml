@@ -40,20 +40,21 @@ spec:
             value: "1000"
           - name: PGID
             value: "1000"
+          
           ports:
             - name: https
               containerPort: 8443
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: https
-          readinessProbe:
-            httpGet:
-              path: /
-              port: https
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: https
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: https
           volumeMounts:
-          - name: dev-config-storage
+          - name: dev-home-storage
             mountPath: /config
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
@@ -70,6 +71,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-      - name: dev-config-storage
-        persistentVolumeClaim:
-          claimName: dev-config-claim
+      - name: dev-home-storage
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/monofuel

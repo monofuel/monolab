@@ -4,6 +4,7 @@ k8s homelab learning
 build.ps1 to build & push custom images (not used currently)
 apply.ps1 to apply helm charts
 
+TODO reworking to use a kubernetes cluster instead of minikube
 
 
 # Notes

@@ -8,3 +8,10 @@ FROM linuxserver/code-server
 # Setup dev environment
 RUN apt update
 RUN apt install -y ansible build-essential python-pip nmap tmux vim
+
+RUN usermod -l monofuel abc
+RUN groupmod -n monofuel abc
+RUN chsh -s /bin/bash monofuel
+RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/10-adduser
+RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/30-config
+RUN sed -i 's/abc/monofuel/g' /etc/services.d/code-server/run
