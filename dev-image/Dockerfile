@@ -9,6 +9,8 @@ FROM linuxserver/code-server
 RUN apt update
 RUN apt install -y ansible build-essential python-pip nmap tmux vim
 
+RUN apt install -y lua5.3 wget fish liblua5.3-dev liblua5.3 unzip
+
 RUN usermod -l monofuel abc
 RUN groupmod -n monofuel abc
 RUN chsh -s /bin/bash monofuel
