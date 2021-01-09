@@ -2,8 +2,7 @@ FROM linuxserver/code-server
 
 # TODO use github.com/monofuel/monoboot scripts
 
-# TODO change default username
-# TODO change default shell
+# TODO set passwd / sudo
 
 # Setup dev environment
 RUN apt update
