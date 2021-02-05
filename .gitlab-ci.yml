@@ -1,4 +1,4 @@
-image: debian
+image: docker:git
 
 before_script:
   - apt update
