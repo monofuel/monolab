@@ -2,7 +2,7 @@ image: docker:git
 
 before_script:
   - apk update
-  - apk install helm
+  - apk add helm
 
 
 stages:
