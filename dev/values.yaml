@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: dev-image
-  pullPolicy: IfNotPresent
+  repository: registry.gitlab.com/monofuel34089/monolab/dev-image
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
