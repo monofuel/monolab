@@ -1,13 +1,8 @@
 image: docker:git
 
 before_script:
-  - apt update
-  - apt install -y curl gnupg
-  - curl https://baltocdn.com/helm/signing.asc | apt-key add -
-  - apt-get install -y apt-transport-https --yes
-  - echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
-  - apt-get update
-  - apt-get install -y helm
+  - apk update
+  - apk install helm
 
 
 stages:
