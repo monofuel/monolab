@@ -2,7 +2,7 @@ image: docker:git
 
 before_script:
   - apk update
-  - apk add helm
+  - apk add helm --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted
 
 
 stages:
