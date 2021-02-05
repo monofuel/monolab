@@ -72,17 +72,22 @@ spec:
       {{- end }}
       volumes:
       - name: nagios-etc-storage
-        persistentVolumeClaim:
-          claimName: nagios-etc-claim
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/nagios/etc
       - name: nagios-var-storage
-        persistentVolumeClaim:
-          claimName: nagios-var-claim
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/nagios/var
       - name: nagios-plugin-storage
-        persistentVolumeClaim:
-          claimName: nagios-plugin-claim
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/nagios/plugins
       - name: nagiosgraph-var-storage
-        persistentVolumeClaim:
-          claimName: nagiosgraph-var-claim
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/nagios/nagiosgraph/var
       - name: nagiosgraph-etc-storage
-        persistentVolumeClaim:
-          claimName: nagiosgraph-etc-claim
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/nagios/nagiosgraph/etc
