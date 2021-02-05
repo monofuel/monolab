@@ -1,5 +1,16 @@
 image: docker:git
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  CONTAINER_REGISTRY: registry.gitlab.com/$CI_PROJECT_PATH
+  DOCKER_DRIVER: overlay2
+  # See https://about.gitlab.com/2019/07/31/docker-in-docker-with-docker-19-dot-03/
+  DOCKER_TLS_CERTDIR: ''
+
+services:
+  - docker:dind
+
+
 before_script:
   - apk update
   - apk add helm --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted
