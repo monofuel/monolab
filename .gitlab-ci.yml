@@ -40,7 +40,7 @@ dev_build:
     - docker info
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN ${CONTAINER_REGISTRY}
     # - docker pull ${CONTAINER_REGISTRY}/sr_main:latest || true
-    - cd ../dev-image && docker build -t ${CONTAINER_REGISTRY}/dev-image:latest .
+    - cd ./dev-image && docker build -t ${CONTAINER_REGISTRY}/dev-image:latest .
     - docker tag ${CONTAINER_REGISTRY}/dev-image:latest ${CONTAINER_REGISTRY}/dev-image:$CI_COMMIT_SHA
     - docker push ${CONTAINER_REGISTRY}/dev-image:$CI_COMMIT_SHA
     - docker push ${CONTAINER_REGISTRY}/dev-image:latest
