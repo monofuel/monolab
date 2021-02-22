@@ -6,12 +6,15 @@ FROM linuxserver/code-server
 
 # Setup dev environment
 RUN apt update
-RUN apt install -y ansible build-essential python-pip nmap tmux vim
-
-RUN apt install -y lua5.3 wget fish liblua5.3-dev liblua5.3 unzip
+RUN apt install -y ansible build-essential python-pip nmap tmux vim lua5.3 wget fish liblua5.3-dev liblua5.3 unzip sudo kubectl
 
 RUN usermod -l monofuel abc
 RUN groupmod -n monofuel abc
+RUN gpasswd -a monofuel wheel
+
+# HACK not great, but it's probably fine (tm)
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 RUN chsh -s /bin/bash monofuel
 RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/10-adduser
 RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/30-config
