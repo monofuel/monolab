@@ -15,7 +15,7 @@ RUN apt install -y ansible build-essential python-pip nmap tmux vim lua5.3 wget 
 
 RUN usermod -l monofuel abc
 RUN groupmod -n monofuel abc
-RUN gpasswd -a monofuel wheel
+RUN gpasswd -a monofuel sudo
 
 # HACK not great, but it's probably fine (tm)
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
