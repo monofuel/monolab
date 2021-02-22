@@ -20,9 +20,12 @@ RUN groupmod -n monofuel abc
 RUN gpasswd -a monofuel sudo
 
 # HACK not great, but it's probably fine (tm)
+# TODO should set SUDO_PASSWORD_HASH instead
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN chsh -s /bin/bash monofuel
 RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/10-adduser
 RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/30-config
+# -R was very very very very slow
+RUN sed -i 's/chown -R/chown /g' /etc/cont-init.d/30-config
 RUN sed -i 's/abc/monofuel/g' /etc/services.d/code-server/run
