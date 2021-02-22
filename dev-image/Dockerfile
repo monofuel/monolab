@@ -6,7 +6,12 @@ FROM linuxserver/code-server
 
 # Setup dev environment
 RUN apt update
-RUN apt install -y ansible build-essential python-pip nmap tmux vim lua5.3 wget fish liblua5.3-dev liblua5.3 unzip sudo kubectl
+RUN apt install -y apt-transport-https gnupg2 curl
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+RUN apt update
+
+RUN apt install -y ansible build-essential python-pip nmap tmux vim lua5.3 wget fish liblua5.3-dev liblua5.3 unzip sudo
 
 RUN usermod -l monofuel abc
 RUN groupmod -n monofuel abc
