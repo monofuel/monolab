@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: jasonrivers/nagios
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
@@ -25,8 +25,11 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext: 
+  # HACK I set the nfs share to mapall user to nagios
+  # runAsUser: 1001
+  # runAsGroup: 1001
+  #fsGroup: 1001
 
 securityContext: {}
   # capabilities:
