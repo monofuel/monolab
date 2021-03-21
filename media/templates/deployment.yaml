@@ -36,20 +36,26 @@ spec:
           env:
           - name: TZ
             value: America/Los_Angeles
-          - name: PLEX_CLAIM
-            value: TODO
+          - name: PLEX_UID
+            value: '1002'
+          - name: PLEX_GID
+            value: '1002'
+          - name: HOSTNAME
+            value: Mjolnir
+          - name: ADVERTISE_IP
+            value: http://157.131.99.30:32400
           ports:
             - name: http
               containerPort: 32400
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 32400
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 32400
           volumeMounts:
           - name: plex-config-storage
             mountPath: /config
