@@ -6,13 +6,13 @@ FROM linuxserver/code-server
 
 # Setup dev environment
 RUN apt update
-RUN apt install -y apt-transport-https gnupg2 curl
+RUN apt install -y apt-transport-https gnupg2 curl lsb-release
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN curl https://baltocdn.com/helm/signing.asc | apt-key add -
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
 RUN echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
-RUN apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+RUN echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
 RUN apt update
 
 RUN apt install -y ansible build-essential terraform packer python-pip nmap tmux vim lua5.3 wget fish liblua5.3-dev liblua5.3 unzip sudo kubectl helm
@@ -31,5 +31,3 @@ RUN sed -i 's/abc/monofuel/g' /etc/cont-init.d/30-config
 # -R was very very very very slow
 RUN sed -i 's/chown -R/chown /g' /etc/cont-init.d/30-config
 RUN sed -i 's/abc/monofuel/g' /etc/services.d/code-server/run
-
-# TODO add terraform
