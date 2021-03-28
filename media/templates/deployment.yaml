@@ -28,7 +28,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: plex
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -61,8 +61,60 @@ spec:
             mountPath: /config
           - name: plex-transcode-storage
             mountPath: /transcode
-          - name: plex-data-storage
-            mountPath: /data
+          - name: plex-data-movie-storage
+            mountPath: /media/movies
+          - name: plex-data-tv-storage
+            mountPath: /media/tv
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        - name: radarr
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "linuxserver/radarr:latest"
+          imagePullPolicy:  {{ .Values.image.pullPolicy }}
+          env:
+          - name: TZ
+            value: America/Los_Angeles
+          - name: PUID
+            value: '1002'
+          - name: PGID
+            value: '1002'
+          ports:
+            - name: radarr
+              containerPort: 7878
+              protocol: TCP
+          volumeMounts:
+          - name: plex-data-movie-storage
+            mountPath: /media/movies
+          - name: radarr-storage
+            mountPath: /config
+          - name: downloads-storage
+            mountPath: /downloads
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        - name: sabnzbd
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "sabnzbd/sabnzbd:latest"
+          imagePullPolicy:  {{ .Values.image.pullPolicy }}
+          env:
+          - name: TZ
+            value: America/Los_Angeles
+          - name: SABNZBD_UID
+            value: '1002'
+          - name: SABNZBD_GID
+            value: '1002'
+          ports:
+            - name: sabnzbd
+              containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+          - name: plex-data-movie-storage
+            mountPath: /media/movies
+          - name: plex-data-tv-storage
+            mountPath: /media/tv
+          - name: sabnzbd-storage
+            mountPath: /datadir
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -86,7 +138,23 @@ spec:
         nfs:
           server: 192.168.11.126
           path: /mnt/Crystarium/home/plex/transcode
-      - name: plex-data-storage
+      - name: plex-data-movie-storage
         nfs:
           server: 192.168.11.126
-          path: /mnt/Crystarium/media
+          path: /mnt/Crystarium/media/movies
+      - name: plex-data-tv-storage
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/media/tv
+      - name: sabnzbd-storage
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/plex/sabnzbd
+      - name: radarr-storage
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/plex/radarr
+      - name: downloads-storage
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/media/downloads

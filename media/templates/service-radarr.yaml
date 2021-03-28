@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "media.fullname" . }}-radarr
+  labels:
+    {{- include "media.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.radarr_service.type }}
+  ports:
+    - port: {{ .Values.radarr_service.port }}
+      nodePort: {{ .Values.radarr_service.nodePort }}
+      protocol: TCP
+      name: radarr
+  selector:
+    {{- include "media.selectorLabels" . | nindent 4 }}

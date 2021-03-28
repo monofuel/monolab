@@ -25,22 +25,25 @@ TODO reworking to use a kubernetes cluster instead of minikube
 
 # TODO
 
+- migrate orbital project AWS stuff
+    - https://gitlab.com/monofuel34089/orbital
+
 - mgmt containers
     - organizr
     - influxdb
     - grafana
     - chronograf
     - home-assistant
+- set up iscsi mounts for containers that want sqlite
+    - I think that's the easiest / best solution for now?
 - figure out how nfs mounts work
     - media containers
-        - plex
-        - sabnzbd
         - sonarr
-        - radarr
-- openvpn servers
-- k8s openVPN clients
+- openvpn servers?
+- k8s openVPN clients?
 - setup k8s in VMs on home servers
-
+    - automate process with terraform & proxmox
+- migrate DNS
 
 - https://docs.gitlab.com/runner/install/kubernetes.html
 

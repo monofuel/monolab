@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "media.fullname" . }}
+  name: {{ include "media.fullname" . }}-plex
   labels:
     {{- include "media.labels" . | nindent 4 }}
 spec:

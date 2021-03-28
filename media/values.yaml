@@ -41,6 +41,16 @@ service:
   port: 32400 
   nodePort: 32400
 
+radarr_service:
+  type: NodePort
+  port: 7878
+  nodePort: 30882
+
+sabnzbd_service:
+  type: NodePort
+  port: 8080 
+  nodePort: 30881
+
 ingress:
   enabled: false
   annotations: {}
