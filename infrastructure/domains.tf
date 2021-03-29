@@ -1,25 +1,36 @@
-resource "linode_domain" "japura" {
-  domain    = "japura.net"
-  type      = "master"
-  soa_email = "admin@japura.net"
+provider "namecheap" {
+  username  = "monofuel"
+  api_user  = "monofuel"
+  api_token = var.namecheap_key
 }
 
-resource "linode_domain" "soggysquad" {
-  domain    = "soggysquad.space"
-  type      = "master"
-  soa_email = "admin@soggysquad.space"
+# NB. disabling these domain resources for now
+
+# Personal blog domain
+resource "namecheap_domain" "monofuel-dev" {
+  name                 = "monofuel.dev"
+  add_free_who_isguard = true
+  years                = 2
 }
 
-resource "linode_domain" "monofuel-dev" {
-  domain    = "monofuel.dev"
-  type      = "master"
-  soa_email = "admin@japura.net"
+# # Community domain
+# # Was for japura.net minecraft, no longer active
+resource "namecheap_domain" "japura-net" {
+  name                 = "japura.net"
+  add_free_who_isguard = true
+  years                = 9
 }
 
-resource "linode_domain_record" "lede" {
-  domain_id   = "${linode_domain.monofuel-dev.id}"
-  name        = "lede"
-  record_type = "A"
-  target      = "192.168.11.1"
-  ttl_sec     = 3600
+# # domain for side projects
+resource "namecheap_domain" "soggysquad-space" {
+  name                 = "soggysquad.space"
+  add_free_who_isguard = true
+  years                = 4
 }
+
+# NB. domain of old project, no longer running
+# resource "namecheap_domain" "badmars-net" {
+#   name                 = "badmars.net"
+#   add_free_who_isguard = true
+#   years                = 2
+# }

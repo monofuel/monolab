@@ -17,6 +17,9 @@ RUN apt update
 
 RUN apt install -y ansible build-essential terraform packer python-pip nmap tmux vim lua5.3 wget fish liblua5.3-dev liblua5.3 unzip sudo kubectl helm
 
+# TODO aws shell
+# pip install aws-shell
+
 RUN usermod -l monofuel abc
 RUN groupmod -n monofuel abc
 RUN gpasswd -a monofuel sudo
