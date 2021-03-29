@@ -19,17 +19,21 @@ provider "registry.terraform.io/hashicorp/aws" {
   ]
 }
 
-provider "registry.terraform.io/namecheap-ecosystem/namecheap" {
-  version     = "0.1.5"
-  constraints = "0.1.5"
+provider "registry.terraform.io/robgmills/namecheap" {
+  version     = "1.7.0"
+  constraints = "1.7.0"
   hashes = [
-    "h1:SwjmI4Y03eP4dVjVvp89CibNGm68AutwrbVWQxDPLaI=",
-    "zh:2b0bbf8ceb6e37ad4654e0ff161b2c2add44a74c4eff95a0542cc38610d813cf",
-    "zh:67ef7c2383fc3ca0a853cb6dd19ef29a1e7ff63bececd493c77fb3ae719cad66",
-    "zh:8884a6d7fbcfa70e3fc9160a726eaa1c5f0e5dd93e5074098603bfaef16f2f5d",
-    "zh:8a6c15ad3ae701714fdad055b684b1a6b88edb56846b698465eb8d5a64217b0c",
-    "zh:91dce2a376343ba1cf2de54db0e21048fc76638b5d32e23a840d9c94c7876b12",
-    "zh:d53ba0ce349f78d77753857601cdcc0c2855504fbd28b00006f4cdb4095413cf",
-    "zh:d8e69dfeb5918d22e64253099fb4ae5cd615ec92eca7af6123e10dd09587eae8",
+    "h1:0c9rbTqJzG1XTAAtV5nMEj94oriTlrMJZtVDfUwyjnE=",
+    "zh:00289e6b99f391c3772b14ad7a0777280a66cb78ff10aed4adbac1ae06e29b9d",
+    "zh:007d6fdf34c0c0b69e1fe6bc8d5d169578ec043ef2f00dd87d848746a87c2d8b",
+    "zh:068ca9426886c25bc85ea3db11f8ea47250a47bda00f8968d42652c91d4adf8e",
+    "zh:0de613cec4802ac9515a3c749f8d013412cfc588e74fee12738aa6c1df00eace",
+    "zh:2f5e1b873b0fd147f1e8bb229015ea336a2d44f770282d7983386b59f51a6d59",
+    "zh:3f7f1f78ba22b396b146f3d031a1c5e566b952520b1ba61dd58b1861653abf06",
+    "zh:60a2bfdd79daf2f7577768d64c1e7f11578daf7afc7e1cd6c3b9956812e2511b",
+    "zh:a173d42f71daacc7d49b1c4019b9b77989d5040158dd21a5c5a52063f2ee7546",
+    "zh:a73df80bb5cd79142316dac6448ef7f7faa154ca4bffbb6e952cab0dd114bc94",
+    "zh:b2b56dac7ad50e632e914a0260eb9bf7b2264154fb3b1ea69bc6d7b19578c5ef",
+    "zh:bce3e426b6e0db493fc92706206237bb827bfd7e43e30294215d3078a2c39762",
   ]
 }

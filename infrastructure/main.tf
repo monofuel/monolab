@@ -2,8 +2,8 @@ terraform {
 
   required_providers {
     namecheap = {
-      source  = "Namecheap-Ecosystem/namecheap"
-      version = "0.1.5"
+      source  = "robgmills/namecheap"
+      version = "1.7.0"
     }
   }
   backend "s3" {
