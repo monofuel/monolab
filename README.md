@@ -23,6 +23,15 @@ TODO reworking to use a kubernetes cluster instead of minikube
 
 - minikube service --url mgmt-nagios
 
+
+- was helm a good idea? I wanted to learn a new tool, but it feels like a complicated fit for my static homelab
+
+- maybe check out using terraform for k8s? https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
+
+# TrueNAS notes
+
+- use 1 dataset for each nfs share (for zfs reasons)
+
 # TODO
 
 - migrate orbital project AWS stuff

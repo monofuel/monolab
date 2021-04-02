@@ -58,6 +58,20 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: home-assistant
+          securityContext:
+              {{- toYaml .Values.securityContext | nindent 12 }}
+          image: homeassistant/home-assistant
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: home-assistant
+              containerPort: 8123
+              protocol: TCP
+          volumeMounts:
+          - name: home-assistant-config
+            mountPath: /config/
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -91,3 +105,7 @@ spec:
         nfs:
           server: 192.168.11.126
           path: /mnt/Crystarium/home/nagios/nagiosgraph/etc
+      - name: home-assistant-config
+        nfs:
+          server: 192.168.11.126
+          path: /mnt/Crystarium/home/homeAssistant/config/

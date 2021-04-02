@@ -1,12 +1,30 @@
-## NB. importing old records from linode, unsure which are still in use
+## NB. importing old records from linode
 
 resource "namecheap_record" "monofuel-dev" {
   # NB. is this one right? or is it actually monofuel.dev.monofuel.dev on mistake
-  name    = "monofuel.dev"
+  name    = "@"
   domain  = "monofuel.dev"
   address = "13.35.125.129"
   type    = "A"
 }
+
+## TODO
+resource "namecheap_record" "star_japura-net" {
+  name    = "*"
+  domain  = "japura.net"
+  address = "13.35.125.129"
+  type    = "A"
+}
+## TODO
+resource "namecheap_record" "star_soggysquad-space" {
+  name    = "*"
+  domain  = "soggysquad.space"
+  address = "13.35.125.129"
+  type    = "A"
+}
+
+
+### Servers
 
 resource "namecheap_record" "farmlife-monofuel-dev" {
   name    = "farmlife"
@@ -37,6 +55,8 @@ resource "namecheap_record" "vpn-monofuel-dev" {
   address = "52.53.100.69"
   type    = "A"
 }
+
+### Cloudfront cnames
 
 resource "namecheap_record" "cf_monofuel-dev" {
   domain = "monofuel.dev"
@@ -72,5 +92,28 @@ resource "namecheap_record" "cf-www-fintool_monofuel-dev" {
 
 
 
+# TODO monofuel.dev mail
 
-
+# japura.net mail is configured automatically by namecheap for gmail
+# NB. old records from linode
+# resource "namecheap_record" "mail3-japura-net" {
+#   domain  = "japura.net"
+#   name    = "ALT1.ASPMX.L.GOOGLE.COM"
+#   address = ""
+#   type    = "MX"
+#   mx_pref = 5
+# }
+# resource "namecheap_record" "mail2-japura-net" {
+#   domain  = "japura.net"
+#   name    = "ALT2.ASPMX.L.GOOGLE.COM"
+#   address = ""
+#   type    = "MX"
+#   mx_pref = 5
+# }
+# resource "namecheap_record" "mail1-japura-net" {
+#   domain  = "japura.net"
+#   name    = "ASPMX.L.GOOGLE.COM"
+#   address = ""
+#   type    = "MX"
+#   mx_pref = 1
+# }

@@ -44,6 +44,11 @@ service:
   port: 80
   nodePort: 30880
 
+homeAssistant_service:
+  type: NodePort
+  port: 8123
+  nodePort: 30123
+
 ingress:
   enabled: false
   annotations: {}
