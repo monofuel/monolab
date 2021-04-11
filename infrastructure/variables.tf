@@ -15,3 +15,19 @@ variable "public_key" {
 variable "namecheap_key" {
   description = "namecheap.com api key"
 }
+
+variable "home_ip" {
+  description = "homelab IP"
+}
+
+variable "farmlife_ip" {
+  description = "backup server IP"
+}
+
+variable "mjolnir_password" {
+  description = "Proxmox Mjolnir Password"
+}
+
+variable "king_password" {
+  description = "Proxmox King Password"
+}

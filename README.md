@@ -28,6 +28,10 @@ TODO reworking to use a kubernetes cluster instead of minikube
 
 - maybe check out using terraform for k8s? https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
 
+# TF notes
+
+- "could not find the record with hash" likely means my home IP changed and I need to update the whitelist
+
 # TrueNAS notes
 
 - use 1 dataset for each nfs share (for zfs reasons)

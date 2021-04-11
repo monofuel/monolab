@@ -2,7 +2,7 @@ provider "namecheap" {
   username = "monofuel"
   api_user = "monofuel"
   token    = var.namecheap_key
-  ip       = "157.131.99.30"
+  ip       = var.home_ip
 }
 
 # NB. disabling these domain resources for now

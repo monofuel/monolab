@@ -5,6 +5,14 @@ terraform {
       source  = "robgmills/namecheap"
       version = "1.7.0"
     }
+    proxmox = {
+      source  = "Telmate/proxmox"
+      version = "2.6.8"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.0.3"
+    }
   }
   backend "s3" {
     bucket = "mono-terraform"
@@ -22,4 +30,9 @@ terraform {
 provider "aws" {
   profile = "default"
   region  = var.aws_region
+}
+
+provider "kubernetes" {
+  alias       = "mk8s"
+  config_path = "~/.kube/config"
 }
