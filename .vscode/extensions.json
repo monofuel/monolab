@@ -5,6 +5,7 @@
         "github.vscode-pull-request-github",
         "gruntfuggly.todo-tree",
         "ms-azuretools.vscode-docker",
-        "hashicorp.terraform"
+        "hashicorp.terraform",
+        "ms-vscode-remote.remote-ssh"
     ]
 }
