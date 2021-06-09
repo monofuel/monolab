@@ -1,0 +1,12 @@
+---
+- hosts: pop-dev
+  become: yes
+  roles:
+    - mono-dev
+    - geerlingguy.docker
+  post_tasks:
+    - name: setup user in docker group
+      ansible.builtin.user:
+        name: monofuel
+        shell: /usr/bin/fish
+        group: docker

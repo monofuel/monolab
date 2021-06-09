@@ -1,0 +1,119 @@
+---
+- name: Add microsoft apt key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+# - name: Add ansible key
+#   apt_key:
+#     keyserver: keyserver.ubuntu.com
+#     id: 93C4A3FD7BB9C367
+- name: install http transport
+  apt: 
+    pkg:
+      - apt-transport-https
+      - dirmngr
+- apt_repository:
+    filename: vscode
+    repo: deb https://packages.microsoft.com/repos/vscode stable main
+    state: present
+# - apt_repository:
+#     filename: ansible
+#     repo: deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+#     state: present
+- name: update cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+- name: install productivity tools
+  apt:
+    pkg:
+      - build-essential
+      - aptitude
+      - bash
+      - gimp
+      - code
+      - git
+      - jq
+      - tmux
+      - vim
+      - openssh-client
+      - curl
+      - wget
+      - ansible
+      - python3-pip
+      - htop
+      - terminator
+      - fish
+      - tmux
+      - mosh
+      - stow
+      #- solaar # for mx master mouse
+- pip:
+  # become: monofuel
+    name: 
+      - awscli
+      - aws-shell
+- name: install vscode extensions
+  become: yes
+  become_user: monofuel
+  shell: code --install-extension {{item}}
+  with_items:
+    - mechatroner.rainbow-csv
+    - richie5um2.vscode-sort-json
+    - ms-azuretools.vscode-docker
+    - eamodio.gitlens
+    - coenraads.bracket-pair-colorizer-2
+    - dbaeumer.vscode-eslint
+    - github.vscode-pull-request-github
+    - golang.go
+    - hashicorp.terraform
+    - esbenp.prettier-vscode
+    - gruntfuggly.todo-tree
+    - zxh404.vscode-proto3
+
+# - name: Install inkdrop
+#   snap:
+#     name:
+#       - inkdrop
+#       - bitwarden
+# - name: "snap connect for inkdrop"
+#   shell: snap connect inkdrop:password-manager-service
+
+#- name: Install snaps
+#  snap:
+#    name:
+#      - heroku
+# TODO src directory?
+# - name: checkout dotfiles repo
+#   git:
+#     repo: git@gitlab.com:monofuel34089/dotfiles.git
+#     dest: /home/monofuel/dotfiles
+#     update: yes
+#     recursive: yes
+#     depth: 1
+#   become: yes
+#   become_user: monofuel
+# - name: setup dotfiles
+#   become: yes
+#   become_user: monofuel
+#   shell: ./setup.bash
+#   args: 
+#     chdir: /home/monofuel/dotfiles
+
+
+
+#- name: checkout dotfiles repo
+#  git:
+#    repo: 'ssh://git@gitlab.japura.net:2224/monofuel/dotfiles.git'
+#    dest: /home/monofuel/src/dotfiles
+#    update: yes
+#    recursive: yes
+#    depth: 1
+#  become: yes
+#  become_user: monofuel
+#- name: setup dotfiles
+#  become: yes
+#  become_user: monofuel
+#  shell: ./setup.bash
+#  args: 
+#    chdir: /home/monofuel/src/dotfiles
