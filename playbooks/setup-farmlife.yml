@@ -1,0 +1,5 @@
+---
+- hosts: farmlifepi
+  become: yes
+  roles:
+    - farmlife-pi

@@ -1,0 +1,21 @@
+---
+- name: install tools
+  apt:
+    pkg:
+      - vim
+      - tmux
+      - htop
+      - wget
+      - curl
+- name: install apc ups management
+  apt:
+    pkg:
+      - apcupsd
+- name: copy apcupsd config
+  copy:
+    src: apcupsd.conf
+    dest: /etc/apcupsd/
+- name: Reload apcupsd
+  service:
+    name: apcupsd
+    state: restart

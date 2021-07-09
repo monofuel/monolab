@@ -67,3 +67,32 @@ TODO reworking to use a kubernetes cluster instead of minikube
 - persist nagios /var mounts?
 - nagios liveness/readiness probes?
     - expects authorization by default
+
+
+# Networking notes
+
+nodes + all ports are only accessible via VPN or from LAN
+
+ssh public key
+
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCr72JVAFDEQ4uRnb5RD9hAduM0pX5a+TU1ZJZ1483X1/s1n96lOWIIsedD9N9kFQrWdz94qY5p/B4YRmwOho/JCaUxBeQlDtEwXjItOukCsW+b/Z2dR7UAEOU+LKR/CYxiYFz1a4TmgdiBJ3fZ4kvx8ys/MfWgSFW8mt6oMcLsXit5HE/iCP9uIPJQR8DOFCbVNdgJqwRM6sDR7687V+3zKEUore1xpuy2O4ltblnn+aXBT+Gu231T4ExO6j6fDoJWSGbwRljV6GsKJzDDuJCAw828plLdW8g4O5aFbsuymAApF+9iRdj/IMf7s+t1tEHaF/9WtmcbCnJe6olEqAdnz7PmaEwKiLs/6kRuOse57702nP8EPgdV9InFcncia3GD0ot1HNdmpVWpo8GkIjW485/a4KhYC6BkqONOhnLFGrU++f+Apkzl9TJK5XsAk37L8WcKUufHhvRkxghc7Vrhfuj0WhpFANAsFXUABFhWR5Hp8ERGTCpScEw+KaoTcx8= monofuel@spectre
+```
+
+- farmlife pi
+    - mac:     DC:A6:32:4C:63:5F
+    - lan ip:  192.168.13.108
+    - vpn ip:  10.0.20.38
+- farmlife nas
+    - nic1
+        - mac:     d0:50:99:d5:19:3f
+        - lan ip:  192.168.13.186
+    - nic2
+        - mac:     d0:50:99:d5:19:41
+        - lan ip:  192.168.13.188
+    - vpn
+        - ip:      10.0.20.42
+
+# UPS notes
+
+- http://www.apcupsd.org/manual/manual.pdf
