@@ -95,4 +95,6 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCr72JVAFDEQ4uRnb5RD9hAduM0pX5a+TU1ZJZ1483X
 
 # UPS notes
 
-- http://www.apcupsd.org/manual/manual.pdf
+- setup apcupsd on the pi, to work with the ups over usb
+    - http://www.apcupsd.org/manual/manual.pdf
+- truenas includes nut and the apcups plugin, need to set this up
