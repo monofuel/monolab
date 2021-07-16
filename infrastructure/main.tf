@@ -13,6 +13,10 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = "2.0.3"
     }
+    vsphere = {
+      source  = "hashicorp/vsphere"
+      version = "2.0.2"
+    }
   }
   backend "s3" {
     bucket = "mono-terraform"
@@ -35,4 +39,13 @@ provider "aws" {
 provider "kubernetes" {
   alias       = "mk8s"
   config_path = "~/.kube/config"
+}
+
+provider "vsphere" {
+  user           = "root"
+  password       = var.vsphere_password
+  vsphere_server = "192.168.11.205"
+
+  # TODO get a real cert
+  allow_unverified_ssl = true
 }

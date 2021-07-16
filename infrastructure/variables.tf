@@ -31,3 +31,7 @@ variable "mjolnir_password" {
 variable "king_password" {
   description = "Proxmox King Password"
 }
+
+variable "vsphere_password" {
+  description = "vSphere Password"
+}
